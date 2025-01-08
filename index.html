@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جامعة الزقازيق الأهلية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px;
+            font-size: 22px;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #003f8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">جامعة الزقازيق الأهلية</div>
+
+    <div class="form-container">
+        <input type="text" id="national-id" placeholder="الرقم القومي">
+        <input type="text" id="student-code" placeholder="كود الطالب">
+        <button onclick="checkData()">نتيجة الطالب</button>
+    </div>
+
+    <script>
+        function checkData() {
+            const nationalId = document.getElementById("national-id").value;
+            const studentCode = document.getElementById("student-code").value;
+
+            // تحقق من القيم المدخلة
+            if (nationalId === "30407042200171" && studentCode === "27912023100061") {
+                window.location.href = "result.html"; // الانتقال إلى صفحة النتيجة
+            } else {
+                alert("الرقم القومي أو كود الطالب غير صحيح!");
+            }
+        }
+    </script>
+</body>
+</html>
