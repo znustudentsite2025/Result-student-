@@ -3,30 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نتيجة الطالب</title>
+    <title>جامعة الزقازيق الأهلية</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            text-align: center;
         }
 
         .header {
             background-color: #0056b3;
             color: white;
             padding: 20px;
-            text-align: center;
             font-size: 22px;
         }
 
-        .container {
+        .form-container, .result-container {
             width: 90%;
-            margin: 20px auto;
+            max-width: 400px;
+            margin: 50px auto;
             background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none; /* إخفاء النتيجة افتراضيًا */
+        }
+
+        .form-container.active {
+            display: block; /* إظهار النموذج */
+        }
+
+        .result-container.active {
+            display: block; /* إظهار النتيجة */
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #003f8a;
+        }
+
+        .result-container {
+            text-align: center;
         }
 
         .info-box {
@@ -36,17 +74,6 @@
             border-radius: 5px;
             margin-bottom: 20px;
             text-align: center;
-        }
-
-        .info-box p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-
-        .footer-info {
-            margin-top: 20px;
-            font-size: 14px;
-            color: black;
         }
 
         table {
@@ -74,11 +101,19 @@
 <body>
     <div class="header">جامعة الزقازيق الأهلية</div>
 
-    <div class="container">
+    <!-- النموذج -->
+    <div class="form-container active" id="form">
+        <input type="text" id="national-id" placeholder="الرقم القومي">
+        <input type="text" id="student-code" placeholder="كود الطالب">
+        <button onclick="checkData()">نتيجة الطالب</button>
+    </div>
+
+    <!-- النتيجة -->
+    <div class="result-container" id="result">
         <div class="info-box">
             <p><strong>الاسم:</strong> محمود مصطفى قرني أحمد</p>
             <p><strong>الكود:</strong> 27912023100061</p>
-            <p><strong>الرقم القومي:</strong> 30407042200171</p>
+            <p><strong>الرقم القومي:</strong> 30407142200171</p>
             <p><strong>المستوى:</strong> الثاني</p>
             <p><strong>الفصل الدراسي:</strong> الأول</p>
             <p><strong>القسم / الشعبة:</strong> محاسبة</p>
@@ -156,17 +191,21 @@
                 </tr>
             </tbody>
         </table>
-
-        <div class="footer-info">
-            <p><strong>العام الأكاديمي:</strong> 2024/2025</p>
-            <p><strong>المستوى / الفصل:</strong> المستوى الثاني / الفصل الدراسي الأول</p>
-            <p><strong>القسم / الشعبة:</strong> التجارة / اللغة الإنجليزية / محاسبة</p>
-            <p><strong>تراكمي الفصل:</strong> 954</p>
-            <p><strong>التقدير:</strong> ممتاز</p>
-            <p><strong>النقاط:</strong> 4</p>
-            <p><strong>الساعات المجتازة:</strong> 15</p>
-            <p><strong>نتيجة الفصل:</strong> 482</p>
-        </div>
     </div>
+
+    <script>
+        function checkData() {
+            const nationalId = document.getElementById("national-id").value;
+            const studentCode = document.getElementById("student-code").value;
+
+            // تحقق من القيم المدخلة
+            if (nationalId === "30407042200171" && studentCode === "27912023100061") {
+                document.getElementById("form").classList.remove("active");
+                document.getElementById("result").classList.add("active");
+            } else {
+                alert("الرقم القومي أو كود الطالب غير صحيح!");
+            }
+        }
+    </script>
 </body>
 </html>
